@@ -40,15 +40,6 @@ public class pa01 {
 
         // profit
 
-
-        char a = 'a';
-        char b = 'b';
-
-
-
-        int c = (charToInt(a) + charToInt(b)) % 26;
-
-        System.out.println(c);
     }
 
     public String vigenereCipherAlg(String plaintext, String key){
