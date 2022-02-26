@@ -44,13 +44,12 @@ public class pa01 {
             }
             keyInput.close();
 
+
             // read plaintext file
             while(plaintextInput.hasNextLine()){
                 plainBuilder.append(plaintextInput.nextLine());
             }
             plaintextInput.close();
-
-            // read plaintext and pad with x
 
             // get read results
             String keyTextTemp = keyBuilder.toString();
@@ -68,20 +67,15 @@ public class pa01 {
             }
             for(char c:plainTextTemp.toCharArray()){
                 if(isCharacter(c)){
-                    keyBuilder.append(c);
+                    plainBuilder.append(c);
                 }
             }
 
             // make everything lowercase
-            String key = truncateString(keyBuilder.toString()).toLowerCase(Locale.ROOT);
-            String plainText = truncateString(plainBuilder.toString()).toLowerCase(Locale.ROOT);
-
-            // ensure we are within the 512 character buffer
-            key = truncateString(key);
-            plainText = truncateString(plainText);
+            String key = keyBuilder.toString().toLowerCase(Locale.ROOT);
+            String plainText = plainBuilder.toString().toLowerCase(Locale.ROOT);
 
             // pad with x's if possible
-            key = padString(key);
             plainText = padString(plainText);
 
             // apply cipher algorithm
@@ -141,11 +135,6 @@ public class pa01 {
         return (input >= 65 && input <= 90) || (input >= 97 && input <= 122);
     }
 
-    public static String truncateString(String s){
-        // if input is longer than 512, truncate down to 512
-        return (s.length() > 512) ? s.substring(0, 511) : s;
-    }
-
     public static String padString(String s){
         // leave if already max length
         if(s.length() == 512) return s;
@@ -159,9 +148,9 @@ public class pa01 {
     }
 
     public static void printResult(String plainText, String key, String cipherText){
-        System.out.println("\n\n");
+        System.out.print("\n\n");
 
-        System.out.println("Vigenere Key:\n\n");
+        System.out.print("Vigenere Key:\n\n");
 
         // have to print 80 characters per line, so loop
         // variable for tracking current number of characters on the current line
@@ -169,47 +158,47 @@ public class pa01 {
         for(int i=0; i<key.length(); i++){
 
             if(count % 80 == 0){
-                System.out.println("\n");
+                System.out.print("\n");
                 count = 1;
             } else {
-                System.out.println(key.charAt(i));
+                System.out.print(key.charAt(i));
                 count++;
             }
         }
 
-        System.out.println("\n\n\n");
+        System.out.print("\n\n\n");
 
-        System.out.println("Plaintext:\n\n");
+        System.out.print("Plaintext:\n\n");
 
         count = 1;
         for(int i=0; i<plainText.length(); i++){
 
             if(count % 80 == 0){
-                System.out.println("\n");
+                System.out.print("\n");
                 count = 1;
             } else {
-                System.out.println(plainText.charAt(i));
+                System.out.print(plainText.charAt(i));
                 count++;
             }
         }
 
-        System.out.println("\n\n\n");
+        System.out.print("\n\n\n");
 
-        System.out.println("Ciphertext:\n\n");
+        System.out.print("Ciphertext:\n\n");
 
         count = 1;
         for(int i=0; i<cipherText.length(); i++){
 
             if(count % 80 == 0){
-                System.out.println("\n");
+                System.out.print("\n");
                 count = 1;
             } else {
-                System.out.println(cipherText.charAt(i));
+                System.out.print(cipherText.charAt(i));
                 count++;
             }
         }
 
-        System.out.println("\n");
+        System.out.print("\n");
     }
 }
 
