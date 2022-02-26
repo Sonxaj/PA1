@@ -22,14 +22,14 @@
 |
 +=============================================================================*/
 
-package PA1;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class pa01 {
+
+    // jo725618@
 
     public static void main(String[] args){
         try {
