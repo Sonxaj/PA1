@@ -29,8 +29,6 @@ import java.util.Scanner;
 
 public class pa01 {
 
-    // jo725618@
-
     public static void main(String[] args){
         try {
             // read file from script
