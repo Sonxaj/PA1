@@ -32,8 +32,11 @@ public class pa01 {
     public static void main(String[] args){
         try {
             // read file from script
-            Scanner keyInput = new Scanner(new File(args[0]));
-            Scanner plaintextInput = new Scanner(new File(args[1]));
+            //Scanner keyInput = new Scanner(new File(args[0]));
+            //Scanner plaintextInput = new Scanner(new File(args[1]));
+
+            Scanner keyInput = new Scanner(new File("src/k2.txt"));
+            Scanner plaintextInput = new Scanner(new File("src/p2.txt"));
 
             StringBuilder keyBuilder = new StringBuilder();
             StringBuilder plainBuilder = new StringBuilder();
@@ -104,7 +107,7 @@ public class pa01 {
 
         for (char c:plaintextTemp) {
             // generate ciphertext in that position
-            int cipherChar = charToInt(keyTemp[keyPos]) + charToInt(c);
+            int cipherChar = (charToInt(keyTemp[keyPos]) + charToInt(c)) % 26;
 
             // append to result
             result.append(intToChar(cipherChar));
@@ -152,53 +155,27 @@ public class pa01 {
 
         System.out.print("Vigenere Key:\n\n");
 
-        // have to print 80 characters per line, so loop
-        // variable for tracking current number of characters on the current line
-        int count = 1;
-        for(int i=0; i<key.length(); i++){
-
-            if(count % 80 == 0){
-                System.out.print("\n");
-                count = 1;
-            } else {
-                System.out.print(key.charAt(i));
-                count++;
-            }
+        for (int i = 0, size = key.length(); i < size; i += 80){
+            System.out.println(key.substring(i, Math.min(i + 80, size)));
         }
 
-        System.out.print("\n\n\n");
+        System.out.print("\n\n");
 
         System.out.print("Plaintext:\n\n");
 
-        count = 1;
-        for(int i=0; i<plainText.length(); i++){
-
-            if(count % 80 == 0){
-                System.out.print("\n");
-                count = 1;
-            } else {
-                System.out.print(plainText.charAt(i));
-                count++;
-            }
+        for (int i = 0, size = plainText.length(); i < size; i += 80){
+            System.out.println(plainText.substring(i, Math.min(i + 80, size)));
         }
 
-        System.out.print("\n\n\n");
+        System.out.print("\n\n");
 
         System.out.print("Ciphertext:\n\n");
 
-        count = 1;
-        for(int i=0; i<cipherText.length(); i++){
-
-            if(count % 80 == 0){
-                System.out.print("\n");
-                count = 1;
-            } else {
-                System.out.print(cipherText.charAt(i));
-                count++;
-            }
+        for (int i = 0, size = cipherText.length(); i < size; i += 80){
+            System.out.println(cipherText.substring(i, Math.min(i + 80, size)));
         }
 
-        System.out.print("\n");
+        System.out.println("\n");
     }
 }
 
