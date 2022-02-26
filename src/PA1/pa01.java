@@ -22,7 +22,7 @@
 |
 +=============================================================================*/
 
-package pa01;
+package PA1;
 
 import java.io.File;
 import java.io.FileNotFoundException;
