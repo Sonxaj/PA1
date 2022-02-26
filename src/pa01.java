@@ -32,11 +32,12 @@ public class pa01 {
     public static void main(String[] args){
         try {
             // read file from script
-            //Scanner keyInput = new Scanner(new File(args[0]));
-            //Scanner plaintextInput = new Scanner(new File(args[1]));
+            Scanner keyInput = new Scanner(new File(args[0]));
+            Scanner plaintextInput = new Scanner(new File(args[1]));
 
-            Scanner keyInput = new Scanner(new File("src/k2.txt"));
-            Scanner plaintextInput = new Scanner(new File("src/p2.txt"));
+            // debug
+            //Scanner keyInput = new Scanner(new File("src/k2.txt"));
+            //Scanner plaintextInput = new Scanner(new File("src/p2.txt"));
 
             StringBuilder keyBuilder = new StringBuilder();
             StringBuilder plainBuilder = new StringBuilder();
