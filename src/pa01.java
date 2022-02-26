@@ -82,11 +82,11 @@ public class pa01 {
             // pad with x's if possible
             plainText = padString(plainText);
 
-            // apply cipher algorithm
-            String cipherText = vigenereCipherAlg(plainText, key);
-
             // truncate if possible
             plainText = plainText.substring(0, Math.min(plainText.length(), 512));
+
+            // apply cipher algorithm
+            String cipherText = vigenereCipherAlg(plainText, key);
 
             // print
             printResult(plainText, key, cipherText);
