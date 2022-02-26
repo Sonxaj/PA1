@@ -36,8 +36,8 @@ public class pa01 {
             Scanner plaintextInput = new Scanner(new File(args[1]));
 
             // debug
-            //Scanner keyInput = new Scanner(new File("src/k2.txt"));
-            //Scanner plaintextInput = new Scanner(new File("src/p2.txt"));
+            //Scanner keyInput = new Scanner(new File("src/k3.txt"));
+            //Scanner plaintextInput = new Scanner(new File("src/p3.txt"));
 
             StringBuilder keyBuilder = new StringBuilder();
             StringBuilder plainBuilder = new StringBuilder();
@@ -81,6 +81,9 @@ public class pa01 {
 
             // pad with x's if possible
             plainText = padString(plainText);
+
+            // truncate if possible
+            plainText = plainText.substring(0, Math.min(plainText.length(), 512));
 
             // apply cipher algorithm
             String cipherText = vigenereCipherAlg(plainText, key);
@@ -175,8 +178,6 @@ public class pa01 {
         for (int i = 0, size = cipherText.length(); i < size; i += 80){
             System.out.println(cipherText.substring(i, Math.min(i + 80, size)));
         }
-
-        System.out.println("\n");
     }
 }
 
